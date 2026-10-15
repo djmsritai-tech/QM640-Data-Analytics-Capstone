@@ -18,6 +18,12 @@ This capstone project provides a comprehensive empirical, statistical, and machi
 
 By leveraging cross-sectional unit-level attributes from the **2025 CAMPD bulk data archive ($N = 4,050$ generating units across 1,328 facilities)**, this study investigates how primary fuel choices, installed generation capacities, boiler architectures, operating vintage, and air pollution control equipment interact to influence thermal operational loading, criteria pollutant emissions, and regulatory compliance risk.
 
+### 🔗 Direct Data & Artifact Access
+- **Raw Data URL:** [`facility-2025.csv`](https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv) (4,050 records, 30 EPA CAMPD attributes)
+- **Processed Clean Data URL:** [`facility_clean_processed.csv`](https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv) (4,050 records, 45 engineered features)
+- **Interim Report Document (Word .docx):** [`QM 640_Interim_Report_DhananjayVerma-0291493.docx`](reports/QM%20640_Interim_Report_DhananjayVerma-0291493.docx)
+- **Interim Report Document (PDF):** [`QM 640_Interim_Report_DhananjayVerma-0291493.pdf`](reports/QM%20640_Interim_Report_DhananjayVerma-0291493.pdf)
+
 ---
 
 ## 📁 Repository Directory Architecture

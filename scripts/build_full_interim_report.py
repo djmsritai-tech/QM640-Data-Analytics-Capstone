@@ -316,11 +316,11 @@ add_p(
     "systematically curated and deposited in the official project repository:"
 )
 
-add_p("Project Repository: https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone", bold_prefix="GitHub URL: ", space_after=4)
-add_p("Raw Data Path: data/raw/facility-2025.csv (4,050 records, 30 EPA CAMPD attributes)", bold_prefix="Raw Dataset: ", space_after=4)
-add_p("Processed Data Path: data/processed/facility_clean_processed.csv (4,050 records, 45 engineered features)", bold_prefix="Clean Dataset: ", space_after=4)
-add_p("Analysis & Modeling Scripts: scripts/run_capstone_analytics.py, scripts/build_full_interim_report.py", bold_prefix="Python Source Code: ", space_after=4)
-add_p("Visualizations & Figures: outputs/figures/ (10 APA 7 publication-grade figures at 300 DPI)", bold_prefix="Figure Directory: ", space_after=12)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone", bold_prefix="Project Repository: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw Data URL: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed Data URL: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Code/Notebooks: ", space_after=4)
+add_p("outputs/figures/ (10 APA 7 publication-grade figures at 300 DPI)", bold_prefix="Figure Directory: ", space_after=12)
 
 add_callout(
     "Standalone Academic Notice: While this Interim Report logically succeeds the initial Capstone Synopsis submitted in "
@@ -602,7 +602,16 @@ format_apa_table(
     tbl_title="Data Dictionary for Clean Air Markets Program Facility Attributes"
 )
 
-add_heading_2("Screenshots and Structural Evidence")
+add_heading_2("GitHub Data Availability Statement")
+add_p(
+    "In accordance with university capstone requirements, the complete raw and processed datasets and Python "
+    "notebooks/scripts are permanently maintained and available in the GitHub repository under:"
+)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw data: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed/clean data: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Code/notebooks: ", space_after=10)
+
+add_heading_2("Screenshots / Evidence (as required)")
 add_p(
     "To satisfy the academic audit requirement, the file and directory architecture of the capstone project repository "
     "is structured hierarchically as depicted below:"
