@@ -602,6 +602,44 @@ format_apa_table(
     tbl_title="Data Dictionary for Clean Air Markets Program Facility Attributes"
 )
 
+add_heading_2("Sample Size Justification & Analytical Record Allocation across Models")
+add_p(
+    "A foundational methodological strength of this capstone research is that modeling and statistical inferences were "
+    f"conducted on the complete national fleet of {res['dataset_overview']['total_rows']:,} generating units across 1,328 unique facilities, "
+    "representing 100% of regulated units in facility-2025.csv with zero records discarded. In accordance with the sampling "
+    "methodology established in the capstone synopsis, statistical power calculations (Cohen, 1988; Cochran, 1977) confirm that "
+    "the 4,050 records exceed the minimum sample size requirements for each analytical model by an order of magnitude."
+)
+add_p(
+    "For RQ1, group comparisons across fuel categories require a minimum of 30 observations per group (rule of thumb) and an "
+    "aggregate sample of 159–180 units for medium effect size (f = 0.25, power = 80%, α = 0.05); the available 4,050 units exceed "
+    "this threshold by over 22-fold. For RQ2, predictive classification guidelines dictate 10–20 observations per candidate predictor "
+    "per class (minimum 120–240 units for 6–12 predictors); our stratified partitioning allocates 3,240 records (80%) to the training "
+    "set with 5-fold cross-validation and preserves 810 records (20%) as a holdout test set (containing 204 actual high emitters and "
+    "606 low emitters), ensuring exceptional model stability and preventing data leakage. For RQ3, linear and multivariate regressions "
+    "require 300–800 records for small-to-medium effect detection; all 4,050 units are utilized (degrees of freedom = 4,046). For RQ4, "
+    "unsupervised clustering heuristics require at least 10× the feature count (≥ 300 units); K-Means is executed across the entire "
+    "4,050-unit fleet. Table 3 details the exact record allocation across all models."
+)
+
+tbl3_alloc_data = [
+    ["RQ1: Emission & Heat Input Variability across Fuel Types", "One-Way ANOVA & Kruskal-Wallis Test", "4,050 records (100%)", "4,050 records (Full population)", "N/A (Omnibus inference)", "159–180 units (f = 0.25, power = 80%)", "Exceeds minimum by >22×; highly robust to non-normality."],
+    ["RQ2: Predictive Classification of High-Emission Units", "Random Forest, Gradient Boosting, Logistic Regression", "4,050 records (100%)", "3,240 records (80% stratified)", "810 records (20% holdout: 204 High / 606 Low)", "120–240 units (10–20 per predictor/class)", "Exceeds minimum by >13×; 5-fold CV ensures generalizability without leakage."],
+    ["RQ3: Unit Age and Operational Thermal Intensity", "Bivariate & Multivariate OLS Regressions", "4,050 records (100%)", "4,050 records (Full population)", "N/A (df = 4,046; residual diagnostics)", "300–800 units (Small-medium effect, r ≈ 0.1-0.3)", "Exceeds minimum by >5×; highly stable parameter standard errors."],
+    ["RQ4: Unsupervised Fleet Segmentation & Archetype Profiling", "K-Means Clustering & 2D Principal Component Analysis", "4,050 records (100%)", "4,050 records (Full population)", "N/A (Fleet-wide centroid optimization)", "≥ 300 units (≥ 10× feature count rule)", "Exceeds minimum by >13×; stable centroid formation and silhouette."]
+]
+
+tbl3_alloc = doc.add_table(rows=len(tbl3_alloc_data) + 1, cols=7)
+format_apa_table(
+    tbl3_alloc,
+    col_widths=[1.2, 1.1, 0.8, 0.9, 1.1, 1.0, 1.1],
+    headers=["Research Question & Scope", "Analytical Model", "Total Records", "Training Set", "Validation / Holdout", "Minimum Needed (Power)", "Statistical Power Evaluation"],
+    data=tbl3_alloc_data,
+    note_text="Comprehensive allocation of records across models confirming 100% data preservation (zero records discarded) and statistical power adequacy.",
+    tbl_num=3,
+    tbl_title="Analytical Model Record Allocation and Sample Size Justification"
+)
+
 add_heading_2("GitHub Data Availability Statement")
 add_p(
     "In accordance with university capstone requirements, the complete raw and processed datasets and Python "
@@ -656,7 +694,7 @@ add_heading_1("4. Analysis & Exploratory Results")
 add_heading_2("Data Cleaning and Preprocessing Log")
 add_p(
     "Rigorous data cleaning and preprocessing protocols were instituted to resolve data quality anomalies, structural "
-    "formatting irregularities, and missing values inherent in regulatory filings. Table 3 enumerates the complete data cleaning "
+    "formatting irregularities, and missing values inherent in regulatory filings. Table 4 enumerates the complete data cleaning "
     "log, specifying the anomaly detected, variables impacted, detection methodology, corrective treatment applied, and theoretical rationale."
 )
 
@@ -678,7 +716,7 @@ format_apa_table(
     headers=["Issue", "Variables Affected", "Detection Method", "Treatment Applied", "Rationale"],
     data=tbl3_data,
     note_text="Systematic log documenting quality audits, parsing procedures, and imputation treatments applied to facility-2025.csv.",
-    tbl_num=3,
+    tbl_num=4,
     tbl_title="Data Cleaning and Preprocessing Log"
 )
 
@@ -764,22 +802,27 @@ add_p(
     "unit age and control counts provide independent variance dimensions suitable for multivariate modeling."
 )
 
-# Table 4: EDA Insight Summary
-tbl4_data = [
+add_p(
+    "Table 5 synthesizes the key empirical insights, operational interpretations, and analytical modeling decisions "
+    "derived from the preceding exploratory visualizations and statistical distributions."
+)
+
+# Table 5: EDA Insight Summary
+tbl5_summary_data = [
     ["Figure 1", "Heat Input Distribution across Fuels", "Coal units exhibit 3.3× higher mean heat input (5,221 mmBtu/hr) than gas units (1,553 mmBtu/hr).", "Directly resolves RQ1; proves massive operational disparity across fuel types.", "Incorporate fuel category as primary fixed effect and predictive feature."],
     ["Figure 2", "Technology Scale vs Prevalence", "Turbines comprise >75% of units but boilers operate at 4-6× higher thermal heat rates.", "Resolves fleet risk exposure; shows emission mass is heavily concentrated in boilers.", "Utilize unit technology category as dummy predictor in RQ2 classification."],
     ["Figure 3", "Pollution Control Adoption Rates", "SO2, PM, and Hg controls are >80% concentrated in coal; NOx controls are ubiquitous (>85%).", "Provides empirical evidence of regulatory standard enforcement under ARP and MATS.", "Engineer Control_Count feature to capture unit environmental compliance burden."],
     ["Figure 4", "Correlation Matrix Heatmap", "Capacity is dominant linear correlate of heat input (r = 0.869); Age shows modest positive r = 0.119.", "Directly informs RQ3 bivariate regression and multicollinearity safeguards.", "Standardize continuous variables for regression and clustering pipelines."]
 ]
 
-tbl4 = doc.add_table(rows=len(tbl4_data) + 1, cols=5)
+tbl5_summary = doc.add_table(rows=len(tbl5_summary_data) + 1, cols=5)
 format_apa_table(
-    tbl4,
+    tbl5_summary,
     col_widths=[1.0, 1.4, 1.6, 1.5, 1.5],
     headers=["Figure/Table Ref", "What it Shows", "Key Insight", "Linkage to RQ/Objective", "Decision / Next Step"],
-    data=tbl4_data,
+    data=tbl5_summary_data,
     note_text="Structured synthesis of exploratory findings, operational interpretations, and modeling decisions.",
-    tbl_num=4,
+    tbl_num=5,
     tbl_title="EDA Insight Summary Matrix"
 )
 
@@ -839,11 +882,11 @@ add_p(
 
 add_heading_2("Features Included and Feature Engineering")
 add_p(
-    "Table 5 details the feature set utilized across the predictive and unsupervised modeling architectures, specifying original "
+    "Table 6 details the feature set utilized across the predictive and unsupervised modeling architectures, specifying original "
     "versus engineered derivation, data type, operational inclusion rationale, and model utilization."
 )
 
-tbl5_data = [
+tbl6_feat_data = [
     ["Capacity_MW", "Engineered (Regex parsed from text)", "Float (Continuous)", "Fundamental measure of electrical power output scale.", "LR, RF, GB, OLS, K-Means, PCA"],
     ["Unit_Age", "Engineered (2025 - Commercial_Year)", "Float (Continuous)", "Captures unit vintage, regulatory grandfathering, and technological era.", "LR, RF, GB, OLS, K-Means, PCA"],
     ["Control_Count", "Engineered (Sum of SO2, NOx, PM, Hg)", "Integer (Discrete)", "Quantifies overall capital investment in emission abatement hardware.", "LR, RF, GB, OLS, K-Means, PCA"],
@@ -856,24 +899,24 @@ tbl5_data = [
     ["High_Emitter", "Engineered (Binary cutoff ≥ 2,350 mmBtu/hr)", "Binary (0, 1)", "Defines top-quartile high-emission regulatory compliance target.", "Target in RQ2 (LR, RF, GB)"]
 ]
 
-tbl5 = doc.add_table(rows=len(tbl5_data) + 1, cols=5)
+tbl6_feat = doc.add_table(rows=len(tbl6_feat_data) + 1, cols=5)
 format_apa_table(
-    tbl5,
+    tbl6_feat,
     col_widths=[1.2, 1.4, 1.1, 1.8, 1.5],
     headers=["Feature Name", "Original / Engineered", "Type", "Reason for Inclusion", "Used in Model(s)"],
-    data=tbl5_data,
+    data=tbl6_feat_data,
     note_text="Systematic specification of features, mathematical transformations, and model utilization mapping.",
-    tbl_num=5,
+    tbl_num=6,
     tbl_title="Feature Set and Usage Specification"
 )
 
 add_heading_2("Evaluation Metrics and Mathematical Formulations")
 add_p(
-    "Table 6 summarizes the formal mathematical evaluation metrics utilized across the inferential, predictive, and clustering "
+    "Table 7 summarizes the formal mathematical evaluation metrics utilized across the inferential, predictive, and clustering "
     "models, including exact algebraic formulas, statistical interpretations, and specific capstone applications."
 )
 
-tbl6_data = [
+tbl7_metrics_data = [
     ["One-Way ANOVA F-Statistic", "F = MS_between / MS_within = [SS_b / (k - 1)] / [SS_w / (N - k)]", "Tests null hypothesis of equal group means across k independent categories.", "RQ1 (Fuel Comparisons)"],
     ["Eta-Squared (Effect Size, η²)", "η² = SS_between / SS_total", "Quantifies the proportion of total variance explained by the categorical predictor.", "RQ1 (Fuel Variance Effect)"],
     ["Kruskal-Wallis H-Statistic", "H = [12 / (N(N+1))] Σ (R_j² / n_j) - 3(N + 1)", "Non-parametric rank sum test evaluating stochastic group dominance.", "RQ1 (Non-Gaussian Fuel Test)"],
@@ -890,14 +933,14 @@ tbl6_data = [
     ["Within-Cluster Sum of Squares", "WCSS = Σ_k Σ_{x ∈ C_k} || x - μ_k ||²", "Total Euclidean dispersion of points around cluster centroids (Elbow curve).", "RQ4 (Optimal k Selection)"]
 ]
 
-tbl6 = doc.add_table(rows=len(tbl6_data) + 1, cols=4)
+tbl7_metrics = doc.add_table(rows=len(tbl7_metrics_data) + 1, cols=4)
 format_apa_table(
-    tbl6,
+    tbl7_metrics,
     col_widths=[1.5, 2.2, 1.8, 1.5],
     headers=["Metric Name", "Mathematical Formula", "Statistical Interpretation", "Used For"],
-    data=tbl6_data,
+    data=tbl7_metrics_data,
     note_text="Mathematical definitions, formulas, and domain applications of all quantitative performance metrics.",
-    tbl_num=6,
+    tbl_num=7,
     tbl_title="Evaluation Metrics and Mathematical Formulations"
 )
 
@@ -955,7 +998,7 @@ add_figure(
 )
 
 add_p(
-    "As displayed in Figure 5 and Table 7, all three classifiers demonstrated exceptional discriminative accuracy, decisively rejecting "
+    "As displayed in Figure 5 and Table 8, all three classifiers demonstrated exceptional discriminative accuracy, decisively rejecting "
     f"the null hypothesis for RQ2. The Random Forest model achieved a test classification accuracy of {res['RQ2']['metrics_random_forest']['accuracy']*100:.2f}%, "
     f"an F1-score of {res['RQ2']['metrics_random_forest']['f1']:.4f}, a sensitivity (recall) of {res['RQ2']['metrics_random_forest']['recall']*100:.2f}%, "
     f"and an outstanding ROC-AUC of {res['RQ2']['metrics_random_forest']['roc_auc']:.4f}. Out of 204 actual high emitters in the test set, "
@@ -971,20 +1014,20 @@ add_p(
     "thermodynamic cycle design and boiler vintage provide vital predictive signals distinguishing high-emission baseload units from peaking turbines."
 )
 
-tbl7_data = [
+tbl8_perf_data = [
     ["Logistic Regression (Ridge L2)", "Scaled Capacity, Age, Controls, Fuel & Tech Dummies", "5-Fold CV: F1 = 0.7866", f"{res['RQ2']['metrics_logistic_regression']['accuracy']*100:.2f}%", f"{res['RQ2']['metrics_logistic_regression']['precision']*100:.2f}%", f"{res['RQ2']['metrics_logistic_regression']['recall']*100:.2f}%", f"{res['RQ2']['metrics_logistic_regression']['f1']:.4f}", f"{res['RQ2']['metrics_logistic_regression']['roc_auc']:.4f}", "Strong linear baseline; high recall (89.2%) ensures few missed high emitters."],
     ["Random Forest (150 Trees)", "Full Feature Set (Continuous + Categorical Dummies)", "5-Fold CV: F1 = 0.8744", f"{res['RQ2']['metrics_random_forest']['accuracy']*100:.2f}%", f"{res['RQ2']['metrics_random_forest']['precision']*100:.2f}%", f"{res['RQ2']['metrics_random_forest']['recall']*100:.2f}%", f"{res['RQ2']['metrics_random_forest']['f1']:.4f}", f"{res['RQ2']['metrics_random_forest']['roc_auc']:.4f}", "Optimal balance: 93.1% recall and 88.6% F1; robust to non-linear interactions."],
     ["Gradient Boosting (100 Trees)", "Full Feature Set (Continuous + Categorical Dummies)", "5-Fold CV: F1 = 0.9114", f"{res['RQ2']['metrics_gradient_boosting']['accuracy']*100:.2f}%", f"{res['RQ2']['metrics_gradient_boosting']['precision']*100:.2f}%", f"{res['RQ2']['metrics_gradient_boosting']['recall']*100:.2f}%", f"{res['RQ2']['metrics_gradient_boosting']['f1']:.4f}", f"{res['RQ2']['metrics_gradient_boosting']['roc_auc']:.4f}", "Superior precision (94.4%) and overall accuracy (96.5%); highly robust decision boundary."]
 ]
 
-tbl7 = doc.add_table(rows=len(tbl7_data) + 1, cols=9)
+tbl8_perf = doc.add_table(rows=len(tbl8_perf_data) + 1, cols=9)
 format_apa_table(
-    tbl7,
+    tbl8_perf,
     col_widths=[1.1, 1.0, 0.9, 0.6, 0.6, 0.6, 0.6, 0.6, 1.2],
     headers=["Model", "Feature Set", "Validation", "Accuracy", "Precision", "Recall", "F1", "AUC", "Key Takeaway"],
-    data=tbl7_data,
+    data=tbl8_perf_data,
     note_text="Test set evaluation metrics across 810 holdout generating units (stratified 80/20 train/test split).",
-    tbl_num=7,
+    tbl_num=8,
     tbl_title="Preliminary Model Performance Comparison (RQ2)"
 )
 
@@ -1051,7 +1094,7 @@ add_p(
 )
 
 clus_profs = res['RQ4']['cluster_profiles']
-tbl8_data = [
+tbl9_clus_data = [
     [
         "Cluster 1: Modern Peaking Turbines",
         f"{clus_profs['Cluster 1: Modern Peaking Turbines']['count']:,} ({clus_profs['Cluster 1: Modern Peaking Turbines']['pct_of_total']:.1f}%)",
@@ -1098,19 +1141,19 @@ tbl8_data = [
     ]
 ]
 
-tbl8 = doc.add_table(rows=len(tbl8_data) + 1, cols=9)
+tbl9_clus = doc.add_table(rows=len(tbl9_clus_data) + 1, cols=9)
 format_apa_table(
-    tbl8,
+    tbl9_clus,
     col_widths=[1.3, 0.8, 0.7, 0.8, 0.6, 0.5, 0.6, 1.0, 1.3],
     headers=["Cluster Designation", "Fleet Share", "Mean Cap", "Mean HI", "Mean Age", "Controls", "High Emitter %", "Modal Technology", "Regulatory Profile"],
-    data=tbl8_data,
+    data=tbl9_clus_data,
     note_text="Empirical profiles of the four distinct operational archetypes identified via K-Means clustering (N = 4,050).",
-    tbl_num=8,
+    tbl_num=9,
     tbl_title="Fleet Operational Archetypes and Environmental Risk Clusters (RQ4)"
 )
 
 add_p(
-    "Table 8 illuminates the distinct regulatory profiles of the four clusters. Cluster 4 (Aging Heavy Coal Baseload) encompasses "
+    "Table 9 illuminates the distinct regulatory profiles of the four clusters. Cluster 4 (Aging Heavy Coal Baseload) encompasses "
     f"414 generating units ({clus_profs['Cluster 4: Aging Heavy Coal Baseload']['pct_of_total']:.1f}% of fleet) with an extraordinary high-emitter "
     f"prevalence of {clus_profs['Cluster 4: Aging Heavy Coal Baseload']['high_emitter_pct']:.1f}%, mean unit age of 46.8 years, and average control count of 3.18. "
     "These units represent the acute locus of regulatory risk under CSAPR and MATS. In contrast, Cluster 1 comprises modern peaking gas turbines "
