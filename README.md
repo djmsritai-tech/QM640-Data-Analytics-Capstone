@@ -129,7 +129,7 @@ Evaluated on an independent $20\%$ holdout test set ($N = 810$, 204 actual high 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/djmsrit/QM640-Data-Analytics-Capstone.git
+git clone https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone.git
 cd QM640-Data-Analytics-Capstone
 ```
 
@@ -176,7 +176,7 @@ If referencing this study or utilizing the analytical pipelines:
   number      = {QM640-0291493},
   year        = {2026},
   month       = {October},
-  url         = {https://github.com/djmsrit/QM640-Data-Analytics-Capstone}
+  url         = {https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone}
 }
 ```
 

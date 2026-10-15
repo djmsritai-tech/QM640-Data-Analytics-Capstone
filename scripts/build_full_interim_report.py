@@ -316,7 +316,7 @@ add_p(
     "systematically curated and deposited in the official project repository:"
 )
 
-add_p("Project Repository: https://github.com/djmsrit/QM640-Data-Analytics-Capstone", bold_prefix="GitHub URL: ", space_after=4)
+add_p("Project Repository: https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone", bold_prefix="GitHub URL: ", space_after=4)
 add_p("Raw Data Path: data/raw/facility-2025.csv (4,050 records, 30 EPA CAMPD attributes)", bold_prefix="Raw Dataset: ", space_after=4)
 add_p("Processed Data Path: data/processed/facility_clean_processed.csv (4,050 records, 45 engineered features)", bold_prefix="Clean Dataset: ", space_after=4)
 add_p("Analysis & Modeling Scripts: scripts/run_capstone_analytics.py, scripts/build_full_interim_report.py", bold_prefix="Python Source Code: ", space_after=4)
