@@ -1,0 +1,371 @@
+{
+  "dataset_overview": {
+    "total_rows": 4050,
+    "total_columns": 45,
+    "high_emitter_threshold_mmbtu": 2350.0,
+    "high_emitter_count": 1018,
+    "high_emitter_pct": 25.135802469135804,
+    "mean_heat_input_rate": 1869.6030347463293,
+    "median_heat_input_rate": 1200.0,
+    "std_heat_input_rate": 1973.6147559885117,
+    "mean_capacity_mw": 230.59247901234568,
+    "median_capacity_mw": 130.0,
+    "std_capacity_mw": 221.07725325674622,
+    "mean_unit_age": 30.63259259259259,
+    "median_unit_age": 24.0,
+    "std_unit_age": 17.333246005441502,
+    "min_age": 0.0,
+    "max_age": 95.0
+  },
+  "RQ1": {
+    "anova_f_stat": 542.3597488981965,
+    "anova_p_val": 0.0,
+    "eta_squared": 0.3490965149277886,
+    "kruskal_wallis_h_stat": 783.021120080332,
+    "kruskal_wallis_p_val": 3.6557417882636174e-168,
+    "fuel_stats": {
+      "Biomass": {
+        "count": 23,
+        "mean": 737.4226991890682,
+        "std": 408.96661122439247,
+        "median": 661.0,
+        "iqr": 443.0,
+        "min": 195.82208134856677,
+        "max": 1673.7
+      },
+      "Coal": {
+        "count": 424,
+        "mean": 5221.154952830189,
+        "std": 3270.3155869032453,
+        "median": 5240.0,
+        "iqr": 4736.75,
+        "min": 260.0,
+        "max": 16250.0
+      },
+      "Natural Gas": {
+        "count": 3247,
+        "mean": 1552.993409300893,
+        "std": 1280.9423001963094,
+        "median": 1200.0,
+        "iqr": 1686.0,
+        "min": 94.0,
+        "max": 11475.5
+      },
+      "Oil / Diesel": {
+        "count": 312,
+        "mean": 776.6214743589743,
+        "std": 1071.937403428278,
+        "median": 482.0,
+        "iqr": 523.8,
+        "min": 180.0,
+        "max": 9491.0
+      },
+      "Other/Unknown": {
+        "count": 44,
+        "mean": 1279.2356509383071,
+        "std": 1127.150136840346,
+        "median": 900.7815742034072,
+        "iqr": 801.891423122381,
+        "min": 340.0,
+        "max": 4405.996830342752
+      }
+    },
+    "tukey_summary": [
+      {
+        "group1": "Biomass",
+        "group2": "Coal",
+        "meandiff": 4483.7323,
+        "p-adj": 0.0,
+        "lower": 3552.953,
+        "upper": 5414.5115,
+        "reject": true
+      },
+      {
+        "group1": "Biomass",
+        "group2": "Natural Gas",
+        "meandiff": 815.5707,
+        "p-adj": 0.1034,
+        "lower": -94.1511,
+        "upper": 1725.2925,
+        "reject": false
+      },
+      {
+        "group1": "Biomass",
+        "group2": "Oil / Diesel",
+        "meandiff": 39.1988,
+        "p-adj": 1.0,
+        "lower": -900.1372,
+        "upper": 978.5348,
+        "reject": false
+      },
+      {
+        "group1": "Biomass",
+        "group2": "Other/Unknown",
+        "meandiff": 541.813,
+        "p-adj": 0.6776,
+        "lower": -576.8183,
+        "upper": 1660.4442,
+        "reject": false
+      },
+      {
+        "group1": "Coal",
+        "group2": "Natural Gas",
+        "meandiff": -3668.1615,
+        "p-adj": 0.0,
+        "lower": -3892.6572,
+        "upper": -3443.6659,
+        "reject": true
+      },
+      {
+        "group1": "Coal",
+        "group2": "Oil / Diesel",
+        "meandiff": -4444.5335,
+        "p-adj": 0.0,
+        "lower": -4768.8122,
+        "upper": -4120.2547,
+        "reject": true
+      },
+      {
+        "group1": "Coal",
+        "group2": "Other/Unknown",
+        "meandiff": -3941.9193,
+        "p-adj": 0.0,
+        "lower": -4630.4978,
+        "upper": -3253.3408,
+        "reject": true
+      },
+      {
+        "group1": "Natural Gas",
+        "group2": "Oil / Diesel",
+        "meandiff": -776.3719,
+        "p-adj": 0.0,
+        "lower": -1034.0547,
+        "upper": -518.6892,
+        "reject": true
+      },
+      {
+        "group1": "Natural Gas",
+        "group2": "Other/Unknown",
+        "meandiff": -273.7578,
+        "p-adj": 0.7895,
+        "lower": -933.5941,
+        "upper": 386.0786,
+        "reject": false
+      },
+      {
+        "group1": "Oil / Diesel",
+        "group2": "Other/Unknown",
+        "meandiff": 502.6142,
+        "p-adj": 0.2864,
+        "lower": -197.4875,
+        "upper": 1202.7159,
+        "reject": false
+      }
+    ]
+  },
+  "RQ2": {
+    "features_used": [
+      "Capacity_MW",
+      "Unit_Age",
+      "Control_Count",
+      "EPA Region",
+      "Fuel_Category_Coal",
+      "Fuel_Category_Natural Gas",
+      "Fuel_Category_Oil / Diesel",
+      "Fuel_Category_Other/Unknown",
+      "Unit_Type_Category_Combustion Turbine",
+      "Unit_Type_Category_Other",
+      "Unit_Type_Category_Other Boilers",
+      "Unit_Type_Category_Tangentially-Fired Boiler",
+      "Unit_Type_Category_Wall-Fired Boiler"
+    ],
+    "train_samples": 3240,
+    "test_samples": 810,
+    "metrics_logistic_regression": {
+      "accuracy": 0.891358024691358,
+      "precision": 0.7338709677419355,
+      "recall": 0.8921568627450981,
+      "f1": 0.8053097345132744,
+      "roc_auc": 0.9657995211285835,
+      "tn": 540,
+      "fp": 66,
+      "fn": 22,
+      "tp": 182,
+      "cv_f1_train": 0.7865647533410091
+    },
+    "metrics_random_forest": {
+      "accuracy": 0.9395061728395062,
+      "precision": 0.8444444444444444,
+      "recall": 0.9313725490196079,
+      "f1": 0.8857808857808858,
+      "roc_auc": 0.9851485148514851,
+      "tn": 571,
+      "fp": 35,
+      "fn": 14,
+      "tp": 190,
+      "cv_f1_train": 0.874427950852593
+    },
+    "metrics_gradient_boosting": {
+      "accuracy": 0.9654320987654321,
+      "precision": 0.9444444444444444,
+      "recall": 0.9166666666666666,
+      "f1": 0.9303482587064676,
+      "roc_auc": 0.9864751181000453,
+      "tn": 595,
+      "fp": 11,
+      "fn": 17,
+      "tp": 187,
+      "cv_f1_train": 0.9113676845815395
+    },
+    "top_features_rf": {
+      "Capacity_MW": 0.5583685723508662,
+      "Unit_Type_Category_Combustion Turbine": 0.1574999910923919,
+      "Unit_Age": 0.10108545631152728,
+      "Control_Count": 0.05915076160726454,
+      "Fuel_Category_Coal": 0.034482955059737606,
+      "EPA Region": 0.03380191817111463,
+      "Unit_Type_Category_Tangentially-Fired Boiler": 0.01566398554344774,
+      "Fuel_Category_Natural Gas": 0.012027352164716263,
+      "Unit_Type_Category_Wall-Fired Boiler": 0.009585237115069386,
+      "Unit_Type_Category_Other Boilers": 0.00899228017960472
+    }
+  },
+  "RQ3": {
+    "pearson_r_age_hi": 0.11856490069751582,
+    "pearson_p_age_hi": 3.7377403183314407e-14,
+    "spearman_rho_age_hi": -0.032421880016529875,
+    "spearman_p_age_hi": 0.03909160977072441,
+    "pearson_r_age_intensity": 0.12170253539979707,
+    "pearson_p_age_intensity": 7.749206891195782e-15,
+    "spearman_rho_age_intensity": 0.33895130526612677,
+    "spearman_p_age_intensity": 1.9577672291067518e-109,
+    "simple_regression": {
+      "intercept": 1456.0584106999574,
+      "beta_age": 13.500150951845105,
+      "beta_age_stderr": 1.7770023197036866,
+      "beta_age_pval": 3.737740318334964e-14,
+      "r_squared": 0.014057635677411584,
+      "adj_r_squared": 0.013814072840375391,
+      "f_stat": 57.71666912929537,
+      "f_pval": 3.7377403183276365e-14,
+      "rmse": 1959.45152676068,
+      "mae": 1355.7137111390575
+    },
+    "multivariate_regression": {
+      "intercept": -877.6002355219209,
+      "beta_age": 17.113516276354495,
+      "beta_age_pval": 2.1799127550742636e-82,
+      "beta_capacity": 6.25948888040317,
+      "beta_capacity_pval": 0.0,
+      "beta_control": 700.2223114361332,
+      "beta_control_pval": 4.9059311145319005e-235,
+      "r_squared": 0.7668061653298872,
+      "adj_r_squared": 0.7666332583837651,
+      "f_stat": 4434.7909816650545,
+      "f_pval": 0.0,
+      "rmse": 952.9438078046871,
+      "mae": 621.1053566518024
+    }
+  },
+  "RQ4": {
+    "k_evaluated": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "wcss": [
+      9980.168326275609,
+      6956.28014261208,
+      4807.38234358982,
+      4187.258445108583,
+      3590.164482900573,
+      3229.9206668395286
+    ],
+    "silhouette_scores": [
+      0.3767398872819602,
+      0.40035392874399056,
+      0.44308103622382883,
+      0.38302166927796233,
+      0.40496225491101917,
+      0.4103141260155727
+    ],
+    "optimal_k": 4,
+    "silhouette_optimal": 0.44308103622382883,
+    "pca_variance_ratio": [
+      0.54569211552656,
+      0.2562145141822143
+    ],
+    "pca_cumulative_variance": 0.8019066297087744,
+    "pca_loadings": {
+      "PC1": {
+        "Log_Capacity": 0.6123392923447747,
+        "Log_Heat_Input": 0.6354452020195072,
+        "Unit_Age": -0.02185663574194929,
+        "Control_Count": 0.4698641013688239
+      },
+      "PC2": {
+        "Log_Capacity": -0.13655969704620563,
+        "Log_Heat_Input": 0.01767565894410028,
+        "Unit_Age": 0.9702370604173168,
+        "Control_Count": 0.19919605120660483
+      }
+    },
+    "cluster_profiles": {
+      "Cluster 4: Aging Heavy Coal Baseload": {
+        "cluster_id": 0,
+        "count": 414,
+        "pct_of_total": 10.222222222222223,
+        "mean_capacity_mw": 509.41562801932366,
+        "mean_heat_input_rate": 5656.290338164252,
+        "mean_unit_age": 46.789855072463766,
+        "mean_control_count": 3.181159420289855,
+        "mean_intensity": 11.493248324823142,
+        "high_emitter_pct": 85.99033816425121,
+        "modal_fuel": "Coal",
+        "modal_technology": "Wall-Fired Boiler"
+      },
+      "Cluster 1: Modern Peaking Turbines": {
+        "cluster_id": 1,
+        "count": 1535,
+        "pct_of_total": 37.901234567901234,
+        "mean_capacity_mw": 78.25517915309446,
+        "mean_heat_input_rate": 707.2691384317574,
+        "mean_unit_age": 21.454071661237784,
+        "mean_control_count": 1.0110749185667753,
+        "mean_intensity": 9.965162080272988,
+        "high_emitter_pct": 0.0,
+        "modal_fuel": "Natural Gas",
+        "modal_technology": "Combustion Turbine"
+      },
+      "Cluster 3: Large Combined Cycle Units": {
+        "cluster_id": 2,
+        "count": 1376,
+        "pct_of_total": 33.97530864197531,
+        "mean_capacity_mw": 389.74583575581397,
+        "mean_heat_input_rate": 2610.510515715419,
+        "mean_unit_age": 22.664244186046513,
+        "mean_control_count": 0.9774709302325582,
+        "mean_intensity": 8.24459819149266,
+        "high_emitter_pct": 46.94767441860465,
+        "modal_fuel": "Natural Gas",
+        "modal_technology": "Combined Cycle"
+      },
+      "Cluster 2: Legacy Small Steam & Peakers": {
+        "cluster_id": 3,
+        "count": 725,
+        "pct_of_total": 17.901234567901234,
+        "mean_capacity_mw": 91.84758620689655,
+        "mean_heat_input_rate": 762.0241291109935,
+        "mean_unit_age": 55.962758620689655,
+        "mean_control_count": 0.4068965517241379,
+        "mean_intensity": 11.316997414697699,
+        "high_emitter_pct": 2.206896551724138,
+        "modal_fuel": "Natural Gas",
+        "modal_technology": "Combustion Turbine"
+      }
+    }
+  }
+}
