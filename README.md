@@ -43,9 +43,9 @@ QM640-Data-Analytics-Capstone/
 │       └── facility_clean_processed.csv  # Engineered dataset (4,050 rows, 45 features)
 │
 ├── scripts/
-│   ├── run_capstone_analytics.py         # End-to-end Python statistical & ML pipeline
-│   ├── dhananjay_final_interim_report.py # Automated APA 7 Interim Report Word builder
-│   ├── dhananjay_final_capston_report.py # Automated APA 7 Final Report Word builder
+│   ├── dhananjay_final_capston_report_analytics.py # End-to-end Python statistical & ML pipeline
+│   ├── build_full_interim_report.py                # Automated APA 7 Interim Report Word builder
+│   ├── build_full_final_report.py                  # Automated APA 7 Final Report Word builder
 │   └── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb # Runnable Jupyter Notebook
 │
 ├── outputs/
@@ -162,7 +162,7 @@ pip install -r requirements.txt
 
 ### 3. Execute End-to-End Analytical Pipeline
 ```bash
-python scripts/run_capstone_analytics.py
+python scripts/dhananjay_final_capston_report_analytics.py
 ```
 *Outputs generated:*
 - Cleaned and engineered dataset: `data/processed/facility_clean_processed.csv`
@@ -171,8 +171,8 @@ python scripts/run_capstone_analytics.py
 
 ### 4. Build APA 7 Word Document Reports
 ```bash
-python scripts/dhananjay_final_interim_report.py
-python scripts/dhananjay_final_capston_report.py
+python scripts/build_full_interim_report.py
+python scripts/build_full_final_report.py
 ```
 *Outputs generated:*
 - Formatted Interim Report: `reports/QM 640_Interim_Report_DhananjayVerma-0291493.docx`
