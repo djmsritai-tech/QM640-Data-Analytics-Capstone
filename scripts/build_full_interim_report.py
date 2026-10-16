@@ -315,15 +315,15 @@ add_p(
 add_heading_2("GitHub Data Availability Statement")
 add_p(
     "To support scientific reproducibility, public auditability, and academic evaluation, all raw data artifacts, "
-    "engineered datasets, Python modeling scripts, statistical pipelines, and visualization routines have been "
-    "systematically curated and deposited in the official project repository:"
+    "engineered datasets, executable Jupyter Notebook (.ipynb), Python modeling scripts, statistical pipelines, and "
+    "visualization routines have been systematically curated and deposited in the official project repository:"
 )
 
 add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone", bold_prefix="Project Repository: ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw Data URL: ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed Data URL: ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Code/Notebooks: ", space_after=4)
-add_p("outputs/figures/ (10 APA 7 publication-grade figures at 300 DPI)", bold_prefix="Figure Directory: ", space_after=12)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw data: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed/clean data: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts (and https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb)", bold_prefix="Code/notebooks: ", space_after=4)
+add_p("outputs/figures/ (11 APA 7 publication-grade figures at 300 DPI)", bold_prefix="Figure Directory: ", space_after=12)
 
 add_callout(
     "Standalone Academic Notice: While this Interim Report logically succeeds the initial Capstone Synopsis submitted in "
@@ -645,13 +645,12 @@ format_apa_table(
 
 add_heading_2("GitHub Data Availability Statement")
 add_p(
-    "In accordance with university capstone requirements, the complete raw and processed datasets, executable Jupyter "
-    "Notebook (.ipynb), and Python scripts are permanently maintained and available in the GitHub repository under:"
+    "In accordance with university capstone requirements, the complete raw and processed datasets and Python "
+    "notebooks/scripts are permanently maintained and available in the GitHub repository under:"
 )
 add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw data: ", space_after=4)
 add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed/clean data: ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb", bold_prefix="Interactive Jupyter Notebook (.ipynb): ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Code/scripts: ", space_after=10)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts (and https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb)", bold_prefix="Code/notebooks: ", space_after=10)
 
 add_heading_2("Screenshots / Evidence (as required)")
 add_p(

@@ -324,43 +324,63 @@ doc.add_page_break()
 # ==============================================================================
 # GITHUB REPOSITORY LINKS & STANDALONE DECLARATION (Required after Title Page)
 # ==============================================================================
-add_heading_1("GitHub Repository, Data Assets, and Autonomous Manuscript Notice")
+add_heading_1("GitHub Data Availability Statement & Repository Architecture")
 
 add_p(
     "To ensure complete computational transparency and empirical reproducibility, the raw federal regulatory dataset, engineered "
-    "analytical feature matrices, executable Python scripts, JSON validation artifacts, and high-resolution graphical outputs "
-    "associated with this research are hosted in an open-access GitHub repository:"
+    "analytical feature matrices, executable Jupyter Notebook (.ipynb), Python scripts, JSON validation artifacts, and high-resolution "
+    "graphical outputs associated with this research are hosted in the open-access GitHub repository under:"
 )
 
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone", bold_prefix="Primary GitHub Repository URL: ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Source Dataset URI (facility-2025.csv): ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Engineered Dataset URI (facility_clean_processed.csv): ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Source Code Directory: ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/outputs/figures", bold_prefix="Visual Figure Archive (300 DPI): ", space_after=10)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone", bold_prefix="Project Repository: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw data: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed/clean data: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts (and https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb)", bold_prefix="Code/notebooks: ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/outputs/figures (11 APA 7 publication-grade figures at 300 DPI)", bold_prefix="Figure Directory: ", space_after=10)
 
 tree_text = (
     "QM640-Data-Analytics-Capstone/\n"
     "│\n"
     "├── data/\n"
     "│   ├── raw/\n"
-    "│   │   └── facility-2025.csv             [Unmodified EPA CAMPD file: 4,050 units, 30 fields]\n"
+    "│   │   └── facility-2025.csv             (Source EPA CAMPD archive: N = 4,050 units, 30 fields)\n"
     "│   └── processed/\n"
-    "│       └── facility_clean_processed.csv  [Imputed & transformed matrix: 4,050 units, 45 fields]\n"
+    "│       └── facility_clean_processed.csv  (Cleaned & imputed analytical matrix: 4,050 units, 45 attributes)\n"
     "│\n"
     "├── scripts/\n"
-    "│   ├── dhananjay_final_capston_report_analytics.py         [Core statistical, econometric & ML execution engine]\n"
-    "│   ├── build_full_interim_report.py [Automated Interim Report document compiler]\n"
-    "│   └── build_full_final_report.py [Automated Final Report document compiler]\n"
+    "│   ├── dhananjay_final_capston_report_analytics.py (Primary Python statistical, econometric & ML engine)\n"
+    "│   ├── build_full_interim_report.py                (Programmatic APA 7 Interim Report compiler)\n"
+    "│   ├── build_full_final_report.py                  (Programmatic APA 7 Final Report compiler)\n"
+    "│   └── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb (Interactive Jupyter Notebook)\n"
     "│\n"
     "├── outputs/\n"
-    "│   ├── analytics_results.json            [Serialized test metrics and model parameters]\n"
-    "│   └── figures/                          [Eleven 300-DPI diagnostic figures]\n"
+    "│   ├── analytics_results.json            (Serialized JSON dictionary of model test outputs)\n"
+    "│   └── figures/                          (11 high-resolution 300 DPI diagnostic charts)\n"
+    "│       ├── figure0_system_architecture.png\n"
+    "│       ├── figure1_fuel_emission_boxplot.png\n"
+    "│       ├── figure2_unit_type_distribution.png\n"
+    "│       ├── figure3_controls_by_fuel.png\n"
+    "│       ├── figure4_correlation_heatmap.png\n"
+    "│       ├── figure5_age_vs_heat_input_scatter.png\n"
+    "│       ├── figure6_roc_curves.png\n"
+    "│       ├── figure7_confusion_matrices.png\n"
+    "│       ├── figure8_feature_importance.png\n"
+    "│       ├── figure9_kmeans_elbow_silhouette.png\n"
+    "│       └── figure10_pca_clusters.png\n"
     "│\n"
-    "└── reports/\n"
-    "    ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx & .pdf\n"
-    "    └── QM 640_Final_Report_DhananjayVerma-0291493.docx & .pdf"
+    "├── reports/\n"
+    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.docx    (Compiled APA 7 Final Capstone Manuscript .docx)\n"
+    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.pdf     (Compiled APA 7 Final Capstone Manuscript .pdf)\n"
+    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx  (Compiled APA 7 Interim Milestone Manuscript .docx)\n"
+    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.pdf   (Compiled APA 7 Interim Milestone Manuscript .pdf)\n"
+    "│   └── QM640_Capstone_Synopsis_DhananjayVerma-0291493.docx (Approved Project Proposal Synopsis)\n"
+    "│\n"
+    "├── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb (Root-level Pre-Executed Notebook)\n"
+    "├── requirements.txt                      (Pinned Python library dependencies)\n"
+    "├── .gitignore                            (Version control exclusion specifications)\n"
+    "└── README.md                             (Repository overview and reproduction guide)"
 )
-add_callout(tree_text, prefix="Project Repository Hierarchy:\n")
+add_callout(tree_text, prefix="Repository Directory Architecture:\n")
 
 add_callout(
     "This Final Report is authored as a wholly self-contained scholarly treatise. Readers do not require access to prior "
@@ -1058,7 +1078,7 @@ add_p(
     bold_prefix="7. Deployment: ", space_after=10
 )
 
-add_heading_2("Tools, Technologies, and Repository Directory Architecture")
+add_heading_2("Tools and Technologies")
 add_p(
     "The complete analytical and reporting pipeline was built using an open-source, industry-standard Python 3.11 data science stack: "
     "(1) Pandas (v2.2) and NumPy (v1.26) for vectorized relational data manipulation, regex string parsing, and linear algebra; "
@@ -1066,61 +1086,11 @@ add_p(
     "Tukey HSD post-hoc contrasts, and Ordinary Least Squares econometric estimation; (3) Scikit-Learn (v1.4) for stratified train/test "
     "splitting, k-fold cross-validation, StandardScaler preprocessing, Logistic Regression, Random Forest, Gradient Boosting, K-Means "
     "clustering, Principal Component Analysis, and classification/clustering evaluation metrics; (4) Matplotlib (v3.8) and Seaborn (v0.13) "
-    "for automated 300 DPI publication-grade figure rendering; (5) Python-Docx and Windows COM automation for programmatic APA 7 Word and PDF "
-    "compilation; and (6) Git / GitHub for version control and public data/code hosting."
+    "for automated 300 DPI publication-grade figure rendering; (5) Jupyter / NBConvert for interactive notebook execution "
+    "(QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb); (6) Python-Docx and Windows COM automation for programmatic APA 7 "
+    "Word and PDF compilation (build_full_interim_report.py and build_full_final_report.py); and (7) Git / GitHub for version control and "
+    "public data/code hosting."
 )
-add_p(
-    "All raw data, engineered datasets, executable Jupyter Notebooks (.ipynb), and automated report generation scripts are publicly hosted "
-    "in the project GitHub repository at the following permanent URLs:"
-)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw CAMPD Dataset: ", space_after=3)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed Clean Dataset: ", space_after=3)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb", bold_prefix="Executable Jupyter Notebook (.ipynb): ", space_after=3)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Python Scripts Directory: ", space_after=8)
-
-final_tree_text = (
-    "QM640-Data-Analytics-Capstone/\n"
-    "│\n"
-    "├── data/\n"
-    "│   ├── raw/\n"
-    "│   │   └── facility-2025.csv             (Source EPA CAMPD archive: N = 4,050 units, 30 fields)\n"
-    "│   └── processed/\n"
-    "│       └── facility_clean_processed.csv  (Cleaned & imputed analytical matrix: 4,050 units, 45 attributes)\n"
-    "│\n"
-    "├── scripts/\n"
-    "│   ├── dhananjay_final_capston_report_analytics.py (Primary Python statistical, econometric & ML engine)\n"
-    "│   ├── build_full_interim_report.py                (Programmatic APA 7 Interim Report compiler)\n"
-    "│   ├── build_full_final_report.py                  (Programmatic APA 7 Final Report compiler)\n"
-    "│   └── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb (Interactive Jupyter Notebook)\n"
-    "│\n"
-    "├── outputs/\n"
-    "│   ├── analytics_results.json            (Serialized JSON dictionary of model test outputs)\n"
-    "│   └── figures/                          (11 high-resolution 300 DPI diagnostic charts)\n"
-    "│       ├── figure0_system_architecture.png\n"
-    "│       ├── figure1_fuel_emission_boxplot.png\n"
-    "│       ├── figure2_unit_type_distribution.png\n"
-    "│       ├── figure3_controls_by_fuel.png\n"
-    "│       ├── figure4_correlation_heatmap.png\n"
-    "│       ├── figure5_age_vs_heat_input_scatter.png\n"
-    "│       ├── figure6_roc_curves.png\n"
-    "│       ├── figure7_confusion_matrices.png\n"
-    "│       ├── figure8_feature_importance.png\n"
-    "│       ├── figure9_kmeans_elbow_silhouette.png\n"
-    "│       └── figure10_pca_clusters.png\n"
-    "│\n"
-    "├── reports/\n"
-    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.docx    (Compiled APA 7 Final Capstone Manuscript .docx)\n"
-    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.pdf     (Compiled APA 7 Final Capstone Manuscript .pdf)\n"
-    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx  (Compiled APA 7 Interim Milestone Manuscript .docx)\n"
-    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.pdf   (Compiled APA 7 Interim Milestone Manuscript .pdf)\n"
-    "│   └── QM640_Capstone_Synopsis_DhananjayVerma-0291493.docx (Approved Project Proposal Synopsis)\n"
-    "│\n"
-    "├── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb (Root-level Pre-Executed Notebook)\n"
-    "├── requirements.txt                      (Pinned Python library dependencies)\n"
-    "├── .gitignore                            (Version control exclusion specifications)\n"
-    "└── README.md                             (Repository overview and reproduction guide)"
-)
-add_callout(final_tree_text, prefix="Repository Directory Architecture:\n")
 
 # ==============================================================================
 # 5. RESULTS
