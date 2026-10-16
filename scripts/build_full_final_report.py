@@ -1058,7 +1058,7 @@ add_p(
     bold_prefix="7. Deployment: ", space_after=10
 )
 
-add_heading_2("Tools and Technologies")
+add_heading_2("Tools, Technologies, and Repository Directory Architecture")
 add_p(
     "The complete analytical and reporting pipeline was built using an open-source, industry-standard Python 3.11 data science stack: "
     "(1) Pandas (v2.2) and NumPy (v1.26) for vectorized relational data manipulation, regex string parsing, and linear algebra; "
@@ -1069,6 +1069,58 @@ add_p(
     "for automated 300 DPI publication-grade figure rendering; (5) Python-Docx and Windows COM automation for programmatic APA 7 Word and PDF "
     "compilation; and (6) Git / GitHub for version control and public data/code hosting."
 )
+add_p(
+    "All raw data, engineered datasets, executable Jupyter Notebooks (.ipynb), and automated report generation scripts are publicly hosted "
+    "in the project GitHub repository at the following permanent URLs:"
+)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw CAMPD Dataset: ", space_after=3)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed Clean Dataset: ", space_after=3)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb", bold_prefix="Executable Jupyter Notebook (.ipynb): ", space_after=3)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Python Scripts Directory: ", space_after=8)
+
+final_tree_text = (
+    "QM640-Data-Analytics-Capstone/\n"
+    "│\n"
+    "├── data/\n"
+    "│   ├── raw/\n"
+    "│   │   └── facility-2025.csv             (Source EPA CAMPD archive: N = 4,050 units, 30 fields)\n"
+    "│   └── processed/\n"
+    "│       └── facility_clean_processed.csv  (Cleaned & imputed analytical matrix: 4,050 units, 45 attributes)\n"
+    "│\n"
+    "├── scripts/\n"
+    "│   ├── dhananjay_final_capston_report_analytics.py (Primary Python statistical, econometric & ML engine)\n"
+    "│   ├── build_full_interim_report.py                (Programmatic APA 7 Interim Report compiler)\n"
+    "│   ├── build_full_final_report.py                  (Programmatic APA 7 Final Report compiler)\n"
+    "│   └── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb (Interactive Jupyter Notebook)\n"
+    "│\n"
+    "├── outputs/\n"
+    "│   ├── analytics_results.json            (Serialized JSON dictionary of model test outputs)\n"
+    "│   └── figures/                          (11 high-resolution 300 DPI diagnostic charts)\n"
+    "│       ├── figure0_system_architecture.png\n"
+    "│       ├── figure1_fuel_emission_boxplot.png\n"
+    "│       ├── figure2_unit_type_distribution.png\n"
+    "│       ├── figure3_controls_by_fuel.png\n"
+    "│       ├── figure4_correlation_heatmap.png\n"
+    "│       ├── figure5_age_vs_heat_input_scatter.png\n"
+    "│       ├── figure6_roc_curves.png\n"
+    "│       ├── figure7_confusion_matrices.png\n"
+    "│       ├── figure8_feature_importance.png\n"
+    "│       ├── figure9_kmeans_elbow_silhouette.png\n"
+    "│       └── figure10_pca_clusters.png\n"
+    "│\n"
+    "├── reports/\n"
+    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.docx    (Compiled APA 7 Final Capstone Manuscript .docx)\n"
+    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.pdf     (Compiled APA 7 Final Capstone Manuscript .pdf)\n"
+    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx  (Compiled APA 7 Interim Milestone Manuscript .docx)\n"
+    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.pdf   (Compiled APA 7 Interim Milestone Manuscript .pdf)\n"
+    "│   └── QM640_Capstone_Synopsis_DhananjayVerma-0291493.docx (Approved Project Proposal Synopsis)\n"
+    "│\n"
+    "├── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb (Root-level Pre-Executed Notebook)\n"
+    "├── requirements.txt                      (Pinned Python library dependencies)\n"
+    "├── .gitignore                            (Version control exclusion specifications)\n"
+    "└── README.md                             (Repository overview and reproduction guide)"
+)
+add_callout(final_tree_text, prefix="Repository Directory Architecture:\n")
 
 # ==============================================================================
 # 5. RESULTS

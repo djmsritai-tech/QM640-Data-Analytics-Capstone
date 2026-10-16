@@ -645,12 +645,13 @@ format_apa_table(
 
 add_heading_2("GitHub Data Availability Statement")
 add_p(
-    "In accordance with university capstone requirements, the complete raw and processed datasets and Python "
-    "notebooks/scripts are permanently maintained and available in the GitHub repository under:"
+    "In accordance with university capstone requirements, the complete raw and processed datasets, executable Jupyter "
+    "Notebook (.ipynb), and Python scripts are permanently maintained and available in the GitHub repository under:"
 )
 add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv", bold_prefix="Raw data: ", space_after=4)
 add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv", bold_prefix="Processed/clean data: ", space_after=4)
-add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Code/notebooks: ", space_after=10)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb", bold_prefix="Interactive Jupyter Notebook (.ipynb): ", space_after=4)
+add_p("https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/tree/main/scripts", bold_prefix="Code/scripts: ", space_after=10)
 
 add_heading_2("Screenshots / Evidence (as required)")
 add_p(
@@ -668,13 +669,14 @@ tree_text = (
     "│       └── facility_clean_processed.csv  [Engineered dataset: 4,050 rows, 45 columns]\n"
     "│\n"
     "├── scripts/\n"
-    "│   ├── dhananjay_final_capston_report_analytics.py         [End-to-end Python statistical & ML pipeline]\n"
-    "│   ├── build_full_interim_report.py [APA 7 Interim Report generation script]\n"
-    "│   └── build_full_final_report.py [APA 7 Final Report generation script]\n"
+    "│   ├── dhananjay_final_capston_report_analytics.py [End-to-end Python statistical & ML pipeline]\n"
+    "│   ├── build_full_interim_report.py                [APA 7 Interim Report generation script]\n"
+    "│   ├── build_full_final_report.py                  [APA 7 Final Report generation script]\n"
+    "│   └── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb [Runnable Jupyter Notebook]\n"
     "│\n"
     "├── outputs/\n"
     "│   ├── analytics_results.json            [Complete JSON export of test statistics & metrics]\n"
-    "│   └── figures/\n"
+    "│   └── figures/                          [11 APA 7 publication figures (300 DPI)]\n"
     "│       ├── figure0_system_architecture.png\n"
     "│       ├── figure1_fuel_emission_boxplot.png\n"
     "│       ├── figure2_unit_type_distribution.png\n"
@@ -687,9 +689,17 @@ tree_text = (
     "│       ├── figure9_kmeans_elbow_silhouette.png\n"
     "│       └── figure10_pca_clusters.png\n"
     "│\n"
-    "└── reports/\n"
-    "    ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx & .pdf\n"
-    "    └── QM 640_Final_Report_DhananjayVerma-0291493.docx & .pdf"
+    "├── reports/\n"
+    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.docx    [Standalone 40-page Final Report (.docx)]\n"
+    "│   ├── QM 640_Final_Report_DhananjayVerma-0291493.pdf     [Standalone Compiled Final Report (.pdf)]\n"
+    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx  [Standalone 32-page Interim Report (.docx)]\n"
+    "│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.pdf   [Standalone Compiled Interim Report (.pdf)]\n"
+    "│   └── QM640_Capstone_Synopsis_DhananjayVerma-0291493.docx [Approved Capstone Synopsis]\n"
+    "│\n"
+    "├── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb [Root Runnable Jupyter Notebook]\n"
+    "├── requirements.txt                      [Python environment package requirements]\n"
+    "├── .gitignore                            [Standard git exclusion rules]\n"
+    "└── README.md                             [Comprehensive project documentation]"
 )
 add_callout(tree_text, prefix="Repository Directory Architecture:\n")
 
