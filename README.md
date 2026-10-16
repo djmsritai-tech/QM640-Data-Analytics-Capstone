@@ -21,6 +21,8 @@ By leveraging cross-sectional unit-level attributes from the **2025 CAMPD bulk d
 ### 🔗 Direct Data & Artifact Access
 - **Raw Data URL:** [`facility-2025.csv`](https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/raw/facility-2025.csv) (4,050 records, 30 EPA CAMPD attributes)
 - **Processed Clean Data URL:** [`facility_clean_processed.csv`](https://github.com/djmsritai-tech/QM640-Data-Analytics-Capstone/blob/main/data/processed/facility_clean_processed.csv) (4,050 records, 45 engineered features)
+- **Final Report Document (Word .docx):** [`QM 640_Final_Report_DhananjayVerma-0291493.docx`](reports/QM%20640_Final_Report_DhananjayVerma-0291493.docx)
+- **Final Report Document (PDF):** [`QM 640_Final_Report_DhananjayVerma-0291493.pdf`](reports/QM%20640_Final_Report_DhananjayVerma-0291493.pdf)
 - **Interim Report Document (Word .docx):** [`QM 640_Interim_Report_DhananjayVerma-0291493.docx`](reports/QM%20640_Interim_Report_DhananjayVerma-0291493.docx)
 - **Interim Report Document (PDF):** [`QM 640_Interim_Report_DhananjayVerma-0291493.pdf`](reports/QM%20640_Interim_Report_DhananjayVerma-0291493.pdf)
 
@@ -41,11 +43,13 @@ QM640-Data-Analytics-Capstone/
 │
 ├── scripts/
 │   ├── run_capstone_analytics.py         # End-to-end Python statistical & ML pipeline
-│   └── build_full_interim_report.py      # Automated APA 7 Word document builder
+│   ├── build_full_interim_report.py      # Automated APA 7 Interim Report Word builder
+│   └── build_full_final_report.py        # Automated APA 7 Final Report Word builder
 │
 ├── outputs/
 │   ├── analytics_results.json            # Machine-readable JSON export of all metrics
-│   └── figures/                          # 10 APA 7 publication figures (300 DPI)
+│   └── figures/                          # 11 APA 7 publication figures (300 DPI)
+│       ├── figure0_system_architecture.png
 │       ├── figure1_fuel_emission_boxplot.png
 │       ├── figure2_unit_type_distribution.png
 │       ├── figure3_controls_by_fuel.png
@@ -58,8 +62,10 @@ QM640-Data-Analytics-Capstone/
 │       └── figure10_pca_clusters.png
 │
 ├── reports/
-│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx  # Standalone 31-page Word Report
-│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.pdf   # Standalone Compiled PDF Report
+│   ├── QM 640_Final_Report_DhananjayVerma-0291493.docx    # Standalone 40-page Final Report (.docx)
+│   ├── QM 640_Final_Report_DhananjayVerma-0291493.pdf     # Standalone Compiled Final Report (.pdf)
+│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx  # Standalone 32-page Interim Report (.docx)
+│   ├── QM 640_Interim_Report_DhananjayVerma-0291493.pdf   # Standalone Compiled Interim Report (.pdf)
 │   └── QM640_Capstone_Synopsis_DhananjayVerma-0291493.docx # Approved Capstone Synopsis
 │
 ├── requirements.txt                      # Python environment package requirements

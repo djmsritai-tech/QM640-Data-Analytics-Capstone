@@ -192,6 +192,9 @@ def format_apa_table(table, col_widths, headers, data, note_text=None, tbl_num=1
     r_title.font.size = Pt(11)
     r_title.italic = True
 
+    table._tbl.addprevious(p_num._p)
+    table._tbl.addprevious(p_title._p)
+
     tblPr = table._tbl.tblPr
     for child in list(tblPr):
         if child.tag.endswith('tblBorders'):
@@ -666,11 +669,13 @@ tree_text = (
     "│\n"
     "├── scripts/\n"
     "│   ├── run_capstone_analytics.py         [End-to-end Python statistical & ML pipeline]\n"
-    "│   └── build_full_interim_report.py      [APA 7 Word document generation script]\n"
+    "│   ├── build_full_interim_report.py      [APA 7 Interim Report generation script]\n"
+    "│   └── build_full_final_report.py        [APA 7 Final Report generation script]\n"
     "│\n"
     "├── outputs/\n"
     "│   ├── analytics_results.json            [Complete JSON export of test statistics & metrics]\n"
     "│   └── figures/\n"
+    "│       ├── figure0_system_architecture.png\n"
     "│       ├── figure1_fuel_emission_boxplot.png\n"
     "│       ├── figure2_unit_type_distribution.png\n"
     "│       ├── figure3_controls_by_fuel.png\n"
@@ -683,8 +688,8 @@ tree_text = (
     "│       └── figure10_pca_clusters.png\n"
     "│\n"
     "└── reports/\n"
-    "    ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx [18-page standalone report]\n"
-    "    └── QM 640_Interim_Report_DhananjayVerma-0291493.pdf  [Compiled PDF report]"
+    "    ├── QM 640_Interim_Report_DhananjayVerma-0291493.docx & .pdf\n"
+    "    └── QM 640_Final_Report_DhananjayVerma-0291493.docx & .pdf"
 )
 add_callout(tree_text, prefix="Repository Directory Architecture:\n")
 

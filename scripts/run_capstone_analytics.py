@@ -643,4 +643,117 @@ plt.tight_layout()
 plt.savefig(os.path.join(FIG_DIR, "figure10_pca_clusters.png"), dpi=300)
 plt.close()
 
+import matplotlib.patches as patches
+
+# Figure 0: System Architecture & End-to-End Workflow Diagram
+fig, ax = plt.subplots(figsize=(14, 7.5), dpi=300)
+ax.set_xlim(0, 16)
+ax.set_ylim(0, 8.5)
+ax.axis('off')
+
+ax.text(8.0, 8.1, 'End-to-End Analytical Architecture and Workflow of the Proposed System',
+        fontsize=14, fontweight='bold', color='#1a252f', ha='center')
+ax.text(8.0, 7.72, 'EPA Clean Air Markets Program Data (CAMPD) — Statistical, Econometric, and Machine Learning Pipeline (N = 4,050 Units)',
+        fontsize=10.5, color='#4a5568', style='italic', ha='center')
+
+def draw_arch_box(ax, x, y, w, h, title, items, header_color, body_color='#f8fafc', body_fontsize=7.8):
+    rect = patches.FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.05,rounding_size=0.12',
+                                  facecolor=body_color, edgecolor=header_color, linewidth=1.8)
+    ax.add_patch(rect)
+    hh = 0.48
+    header = patches.FancyBboxPatch((x, y + h - hh), w, hh, boxstyle='round,pad=0.05,rounding_size=0.12',
+                                    facecolor=header_color, edgecolor=header_color, linewidth=1)
+    ax.add_patch(header)
+    ax.text(x + w/2, y + h - hh/2, title, color='white', fontweight='bold', fontsize=9.2,
+            ha='center', va='center')
+    ty = y + h - hh - 0.22
+    for item in items:
+        ax.text(x + 0.14, ty, item, color='#1e293b', fontsize=body_fontsize, ha='left', va='top')
+        ty -= 0.31
+
+def draw_arch_arrow(ax, x1, y1, x2, y2):
+    ax.annotate('', xy=(x2, y2), xytext=(x1, y1),
+                arrowprops=dict(arrowstyle='->', lw=2.2, color='#334155', shrinkA=2, shrinkB=2))
+
+draw_arch_box(ax, 0.30, 4.45, 3.45, 2.8, '1. Data Source & Ingestion', [
+    '• EPA CAMPD Bulk Data (2025)',
+    '• Raw File: facility-2025.csv',
+    '• N = 4,050 Generating Units',
+    '• 1,328 Unique U.S. Facilities',
+    '• 30 Raw Regulatory Attributes',
+    '• 100% Data Retention (0 Dropped)'
+], '#1e40af', '#eff6ff')
+
+draw_arch_box(ax, 4.25, 4.45, 3.45, 2.8, '2. Data Preprocessing', [
+    '• Primary Key Audit (0 Duplicates)',
+    '• Regex Capacity MWe Parsing',
+    '• Date to Vintage (Unit_Age)',
+    '• Unit-Type Median Imputation',
+    '• Abatement Control Encoding',
+    '• Fuel & Boiler Consolidation'
+], '#0f766e', '#f0fdfa')
+
+draw_arch_box(ax, 8.20, 4.45, 3.45, 2.8, '3. Exploratory Analysis (EDA)', [
+    '• Parametric & Rank Profiles',
+    '• Skewness & Outlier Audits',
+    '• Fuel Heat Input Boxplots',
+    '• Technology Scale Profiling',
+    '• Abatement Adoption Rates',
+    '• Pearson Correlation Matrix'
+], '#b45309', '#fffbeb')
+
+draw_arch_box(ax, 12.15, 4.45, 3.55, 2.8, '4. Feature Engineering', [
+    '• 15 Engineered Predictors',
+    '• Control_Count (SO2/NOx/PM/Hg)',
+    '• Log1p(Capacity) & Log1p(HI)',
+    '• High_Emitter (>= 2,350 mmBtu/hr)',
+    '• One-Hot Categorical Dummies',
+    '• Z-Score Feature Scaling'
+], '#6d28d9', '#f5f3ff')
+
+draw_arch_arrow(ax, 3.80, 5.85, 4.20, 5.85)
+draw_arch_arrow(ax, 7.75, 5.85, 8.15, 5.85)
+draw_arch_arrow(ax, 11.70, 5.85, 12.10, 5.85)
+draw_arch_arrow(ax, 13.92, 4.38, 13.92, 3.82)
+
+draw_arch_box(ax, 9.20, 0.95, 6.50, 2.8, '5. Multi-Tier Analytical Modeling Framework', [
+    '• RQ1 (Inferential): One-Way ANOVA (F = 542.36) & Kruskal-Wallis (H = 783.02)',
+    '• RQ2 (Supervised ML): 80/20 Split (3,240 Train / 810 Holdout) + 5-Fold CV',
+    '   - Logistic Regression (L2), Random Forest (150 Trees), Gradient Boosting',
+    '• RQ3 (Econometric): Bivariate & Multivariate OLS Regressions (df = 4,046)',
+    '• RQ4 (Unsupervised): K-Means Clustering (k = 4) & 2D PCA Projection',
+    '• Power Verification: N = 4,050 Exceeds Required Bounds by 5x to 22x'
+], '#be123c', '#fff1f2', body_fontsize=7.3)
+
+draw_arch_box(ax, 4.65, 0.95, 4.00, 2.8, '6. Evaluation & Diagnostics', [
+    '• Classification: Accuracy, F1-Score,',
+    '   Precision, Recall, ROC-AUC (> 0.985)',
+    '• Regression: R² (0.767), Adj R², RMSE',
+    '• ANOVA: Eta-Squared (η² = 0.349)',
+    '   & Tukey HSD Post-Hoc Contrasts',
+    '• Clustering: WCSS & Silhouette (0.443)'
+], '#0369a1', '#f0f9ff', body_fontsize=7.6)
+
+draw_arch_box(ax, 0.30, 0.95, 3.80, 2.8, '7. Deployment & User Impact', [
+    '• Regulatory Risk Scoring Dashboard',
+    '• Automated High-Emitter Flagging',
+    '• EPA Audit Resource Prioritization',
+    '• 4 Fleet Operational Archetypes',
+    '• CEMS / EPA API Integration',
+    '• Utility Retirement & Dispatch Plan'
+], '#15803d', '#f0fdf4', body_fontsize=7.6)
+
+draw_arch_arrow(ax, 9.15, 2.35, 8.70, 2.35)
+draw_arch_arrow(ax, 4.60, 2.35, 4.15, 2.35)
+
+legend_rect = patches.FancyBboxPatch((0.30, 0.12), 15.40, 0.48, boxstyle='round,pad=0.04,rounding_size=0.08',
+                                     facecolor='#f1f5f9', edgecolor='#94a3b8', linewidth=1.2)
+ax.add_patch(legend_rect)
+ax.text(8.0, 0.36, 'Legend:  [1. Blue] Ingestion  →  [2. Teal] Preprocessing  →  [3. Amber] EDA  →  [4. Purple] Feature Engineering  →  [5. Crimson] Modeling  →  [6. Cyan] Evaluation  →  [7. Green] Deployment',
+        fontsize=7.5, fontweight='bold', color='#1e293b', ha='center', va='center')
+
+plt.tight_layout()
+plt.savefig(os.path.join(FIG_DIR, "figure0_system_architecture.png"), dpi=300, bbox_inches='tight')
+plt.close()
+
 print("PIPELINE COMPLETED SUCCESSFULLY!")
