@@ -43,8 +43,8 @@ QM640-Data-Analytics-Capstone/
 │
 ├── scripts/
 │   ├── run_capstone_analytics.py         # End-to-end Python statistical & ML pipeline
-│   ├── build_full_interim_report.py      # Automated APA 7 Interim Report Word builder
-│   └── build_full_final_report.py        # Automated APA 7 Final Report Word builder
+│   ├── dhananjay_final_interim_report.py # Automated APA 7 Interim Report Word builder
+│   └── dhananjay_final_capston_report.py # Automated APA 7 Final Report Word builder
 │
 ├── outputs/
 │   ├── analytics_results.json            # Machine-readable JSON export of all metrics
@@ -166,12 +166,14 @@ python scripts/run_capstone_analytics.py
 - Complete statistical and ML test metrics: `outputs/analytics_results.json`
 - 10 high-resolution publication charts: `outputs/figures/*.png`
 
-### 4. Build APA 7 Word Document Report
+### 4. Build APA 7 Word Document Reports
 ```bash
-python scripts/build_full_interim_report.py
+python scripts/dhananjay_final_interim_report.py
+python scripts/dhananjay_final_capston_report.py
 ```
 *Outputs generated:*
-- Formatted Word document: `reports/QM 640_Interim_Report_DhananjayVerma-0291493.docx`
+- Formatted Interim Report: `reports/QM 640_Interim_Report_DhananjayVerma-0291493.docx`
+- Formatted Final Report: `reports/QM 640_Final_Report_DhananjayVerma-0291493.docx`
 
 ---
 
