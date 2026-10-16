@@ -25,6 +25,7 @@ By leveraging cross-sectional unit-level attributes from the **2025 CAMPD bulk d
 - **Final Report Document (PDF):** [`QM 640_Final_Report_DhananjayVerma-0291493.pdf`](reports/QM%20640_Final_Report_DhananjayVerma-0291493.pdf)
 - **Interim Report Document (Word .docx):** [`QM 640_Interim_Report_DhananjayVerma-0291493.docx`](reports/QM%20640_Interim_Report_DhananjayVerma-0291493.docx)
 - **Interim Report Document (PDF):** [`QM 640_Interim_Report_DhananjayVerma-0291493.pdf`](reports/QM%20640_Interim_Report_DhananjayVerma-0291493.pdf)
+- **Interactive Jupyter Notebook (.ipynb):** [`QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb`](QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb)
 
 ---
 
@@ -44,7 +45,8 @@ QM640-Data-Analytics-Capstone/
 ├── scripts/
 │   ├── run_capstone_analytics.py         # End-to-end Python statistical & ML pipeline
 │   ├── dhananjay_final_interim_report.py # Automated APA 7 Interim Report Word builder
-│   └── dhananjay_final_capston_report.py # Automated APA 7 Final Report Word builder
+│   ├── dhananjay_final_capston_report.py # Automated APA 7 Final Report Word builder
+│   └── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb # Runnable Jupyter Notebook
 │
 ├── outputs/
 │   ├── analytics_results.json            # Machine-readable JSON export of all metrics
@@ -68,6 +70,7 @@ QM640-Data-Analytics-Capstone/
 │   ├── QM 640_Interim_Report_DhananjayVerma-0291493.pdf   # Standalone Compiled Interim Report (.pdf)
 │   └── QM640_Capstone_Synopsis_DhananjayVerma-0291493.docx # Approved Capstone Synopsis
 │
+├── QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb # Root Runnable Jupyter Notebook
 ├── requirements.txt                      # Python environment package requirements
 ├── .gitignore                            # Standard git exclusion rules
 └── README.md                             # Comprehensive project documentation
@@ -174,6 +177,12 @@ python scripts/dhananjay_final_capston_report.py
 *Outputs generated:*
 - Formatted Interim Report: `reports/QM 640_Interim_Report_DhananjayVerma-0291493.docx`
 - Formatted Final Report: `reports/QM 640_Final_Report_DhananjayVerma-0291493.docx`
+
+### 5. Run Interactive Jupyter Notebook
+```bash
+jupyter notebook QM640_Capstone_Analytics_Notebook_DhananjayVerma_0291493.ipynb
+```
+*Contains all 10 analytical stages (Data Ingestion, Regex Cleaning & Imputation, Power & Sample Size Verification, System Architecture Diagram, EDA Figures 1–4, RQ1 ANOVA/Kruskal-Wallis/Tukey HSD, RQ2 80/20 Stratified ML Classification with 5-Fold CV & ROC/Confusion/Gini charts, RQ3 Bivariate & Multivariate OLS Regressions, RQ4 K-Means $k=4$ & 2D PCA Projection, and Report Artifact Verification) with pre-executed inline outputs and visualizations.*
 
 ---
 
