@@ -605,44 +605,6 @@ format_apa_table(
     tbl_title="Data Dictionary for Clean Air Markets Program Facility Attributes"
 )
 
-add_heading_2("Sample Size Justification & Analytical Record Allocation across Models")
-add_p(
-    "A foundational methodological strength of this capstone research is that modeling and statistical inferences were "
-    f"conducted on the complete national fleet of {res['dataset_overview']['total_rows']:,} generating units across 1,328 unique facilities, "
-    "representing 100% of regulated units in facility-2025.csv with zero records discarded. In accordance with the sampling "
-    "methodology established in the capstone synopsis, statistical power calculations (Cohen, 1988; Cochran, 1977) confirm that "
-    "the 4,050 records exceed the minimum sample size requirements for each analytical model by an order of magnitude."
-)
-add_p(
-    "For RQ1, group comparisons across fuel categories require a minimum of 30 observations per group (rule of thumb) and an "
-    "aggregate sample of 159–180 units for medium effect size (f = 0.25, power = 80%, α = 0.05); the available 4,050 units exceed "
-    "this threshold by over 22-fold. For RQ2, predictive classification guidelines dictate 10–20 observations per candidate predictor "
-    "per class (minimum 120–240 units for 6–12 predictors); our stratified partitioning allocates 3,240 records (80%) to the training "
-    "set with 5-fold cross-validation and preserves 810 records (20%) as a holdout test set (containing 204 actual high emitters and "
-    "606 low emitters), ensuring exceptional model stability and preventing data leakage. For RQ3, linear and multivariate regressions "
-    "require 300–800 records for small-to-medium effect detection; all 4,050 units are utilized (degrees of freedom = 4,046). For RQ4, "
-    "unsupervised clustering heuristics require at least 10× the feature count (≥ 300 units); K-Means is executed across the entire "
-    "4,050-unit fleet. Table 3 details the exact record allocation across all models."
-)
-
-tbl3_alloc_data = [
-    ["RQ1: Emission & Heat Input Variability across Fuel Types", "One-Way ANOVA & Kruskal-Wallis Test", "4,050 records (100%)", "4,050 records (Full population)", "N/A (Omnibus inference)", "159–180 units (f = 0.25, power = 80%)", "Exceeds minimum by >22×; highly robust to non-normality."],
-    ["RQ2: Predictive Classification of High-Emission Units", "Random Forest, Gradient Boosting, Logistic Regression", "4,050 records (100%)", "3,240 records (80% stratified)", "810 records (20% holdout: 204 High / 606 Low)", "120–240 units (10–20 per predictor/class)", "Exceeds minimum by >13×; 5-fold CV ensures generalizability without leakage."],
-    ["RQ3: Unit Age and Operational Thermal Intensity", "Bivariate & Multivariate OLS Regressions", "4,050 records (100%)", "4,050 records (Full population)", "N/A (df = 4,046; residual diagnostics)", "300–800 units (Small-medium effect, r ≈ 0.1-0.3)", "Exceeds minimum by >5×; highly stable parameter standard errors."],
-    ["RQ4: Unsupervised Fleet Segmentation & Archetype Profiling", "K-Means Clustering & 2D Principal Component Analysis", "4,050 records (100%)", "4,050 records (Full population)", "N/A (Fleet-wide centroid optimization)", "≥ 300 units (≥ 10× feature count rule)", "Exceeds minimum by >13×; stable centroid formation and silhouette."]
-]
-
-tbl3_alloc = doc.add_table(rows=len(tbl3_alloc_data) + 1, cols=7)
-format_apa_table(
-    tbl3_alloc,
-    col_widths=[1.2, 1.1, 0.8, 0.9, 1.1, 1.0, 1.1],
-    headers=["Research Question & Scope", "Analytical Model", "Total Records", "Training Set", "Validation / Holdout", "Minimum Needed (Power)", "Statistical Power Evaluation"],
-    data=tbl3_alloc_data,
-    note_text="Comprehensive allocation of records across models confirming 100% data preservation (zero records discarded) and statistical power adequacy.",
-    tbl_num=3,
-    tbl_title="Analytical Model Record Allocation and Sample Size Justification"
-)
-
 add_heading_2("GitHub Data Availability Statement")
 add_p(
     "In accordance with university capstone requirements, the complete raw and processed datasets and Python "
@@ -708,7 +670,7 @@ add_heading_1("4. Analysis & Exploratory Results")
 add_heading_2("Data Cleaning and Preprocessing Log")
 add_p(
     "Rigorous data cleaning and preprocessing protocols were instituted to resolve data quality anomalies, structural "
-    "formatting irregularities, and missing values inherent in regulatory filings. Table 4 enumerates the complete data cleaning "
+    "formatting irregularities, and missing values inherent in regulatory filings. Table 3 enumerates the complete data cleaning "
     "log, specifying the anomaly detected, variables impacted, detection methodology, corrective treatment applied, and theoretical rationale."
 )
 
@@ -730,15 +692,70 @@ format_apa_table(
     headers=["Issue", "Variables Affected", "Detection Method", "Treatment Applied", "Rationale"],
     data=tbl3_data,
     note_text="Systematic log documenting quality audits, parsing procedures, and imputation treatments applied to facility-2025.csv.",
-    tbl_num=4,
+    tbl_num=3,
     tbl_title="Data Cleaning and Preprocessing Log"
 )
 
-add_heading_2("Exploratory Data Analysis (EDA) Results and Interpretations")
+add_heading_2("Minimum Sample Size Computation per Research Question (RQ1–RQ4)")
+add_p(
+    "A foundational methodological strength of this capstone research is that modeling and statistical inferences were "
+    f"conducted on the complete national fleet of {res['dataset_overview']['total_rows']:,} generating units across 1,328 unique facilities, "
+    "representing 100% of regulated units in facility-2025.csv with zero records discarded. In accordance with statistical power "
+    "theory (Cohen, 1988; Cochran, 1977), a priori minimum sample size computations were performed for each Research Question (RQ1–RQ4) "
+    "at a significance level of α = 0.05 and target statistical power of 1 - β = 0.80 (80%):"
+)
+add_p(
+    "For One-Way ANOVA and Kruskal-Wallis testing across k = 5 primary fuel categories, detecting a medium effect size (Cohen's f = 0.25, "
+    "equivalent to η² ≈ 0.0588) at α = 0.05 and 80% power requires a minimum total sample of N_min = 159 to 196 units (and at least 30 units "
+    "per major comparison group under the Central Limit Theorem). Our analyzed sample of N = 4,050 units exceeds this minimum requirement "
+    "by more than 20-fold, yielding achieved statistical power > 99.99%.",
+    bold_prefix="RQ1 Minimum Sample Size Computation: ", space_after=4
+)
+add_p(
+    "For binary classification of High_Emitter status (25.14% positive prevalence, 1,018 high emitters across 4,050 units), standard "
+    "events-per-variable (EPV) guidelines require 10 to 20 observations per candidate predictor per class (N_min = 120 to 240 units for "
+    "core features, or 716 to 1,432 total units across all 18 encoded dummy parameters). Our stratified 80/20 partitioning allocates "
+    "N_train = 3,240 records (80%, containing 814 high emitters) with 5-fold cross-validation and preserves N_test = 810 records (20% "
+    "unseen holdout, containing 204 high emitters and 606 low emitters), exceeding minimum requirements by 3× to 13× with zero data leakage.",
+    bold_prefix="RQ2 Minimum Sample Size Computation: ", space_after=4
+)
+add_p(
+    "For bivariate and multivariate Ordinary Least Squares (OLS) regression with m = 3 predictors (Unit_Age, Capacity_MW, Control_Count), "
+    "detecting a small-to-medium partial effect (f² = 0.02 to 0.15, r ≈ 0.10–0.30) at α = 0.05 and 80% power requires N_min = 300 to 782 "
+    "records (and Green's rule of N ≥ 50 + 8m = 74). Executing OLS across all N = 4,050 units (df = 4,046) exceeds the upper threshold by > 5×.",
+    bold_prefix="RQ3 Minimum Sample Size Computation: ", space_after=4
+)
+add_p(
+    "For unsupervised K-Means clustering and 2D Principal Component Analysis (PCA) across d = 4 continuous operational dimensions and "
+    "k = 4 clusters, multivariate segmentation heuristics require at least 10× to 70× the feature/cluster count (N_min ≥ 160 to 300 units). "
+    "Executing K-Means across all N = 4,050 units exceeds this requirement by > 13×. Table 4 summarizes the minimum sample size computation "
+    "and exact record allocation per Research Question.",
+    bold_prefix="RQ4 Minimum Sample Size Computation: ", space_after=8
+)
+
+tbl3_alloc_data = [
+    ["RQ1: Emission & Heat Input Variability across Fuel Types", "One-Way ANOVA & Kruskal-Wallis Test", "4,050 records (100%)", "4,050 records (Full population)", "N/A (Omnibus inference, df = 4, 4045)", "159–196 units (f = 0.25, α = 0.05, power = 80%)", "Exceeds minimum by >20×; achieved power >99.99%."],
+    ["RQ2: Predictive Classification of High-Emission Units", "Random Forest, Gradient Boosting, Logistic Regression", "4,050 records (100%)", "3,240 records (80% stratified)", "810 records (20% holdout: 204 High / 606 Low)", "120–240 core / 716–1,432 full (10–20 EPV rule)", "Exceeds minimum by 3×–13×; 5-fold CV prevents leakage."],
+    ["RQ3: Unit Age and Operational Thermal Intensity", "Bivariate & Multivariate OLS Regressions", "4,050 records (100%)", "4,050 records (Full population)", "N/A (df = 4,046; residual diagnostics)", "300–782 units (Small-medium effect, r ≈ 0.1–0.3)", "Exceeds minimum by >5×; highly stable slope SEs."],
+    ["RQ4: Unsupervised Fleet Segmentation & Archetype Profiling", "K-Means Clustering & 2D Principal Component Analysis", "4,050 records (100%)", "4,050 records (Full population)", "N/A (Fleet-wide centroid optimization)", "≥ 160–300 units (≥ 10×–70× feature/cluster rule)", "Exceeds minimum by >13×; stable centroid separation."]
+]
+
+tbl3_alloc = doc.add_table(rows=len(tbl3_alloc_data) + 1, cols=7)
+format_apa_table(
+    tbl3_alloc,
+    col_widths=[1.2, 1.1, 0.8, 0.9, 1.1, 1.0, 1.1],
+    headers=["Research Question & Scope", "Analytical Model", "Total Records", "Training Set", "Validation / Holdout", "Minimum Needed (Power)", "Statistical Power Evaluation"],
+    data=tbl3_alloc_data,
+    note_text="Minimum sample size computations (α = 0.05, power = 80%) and record allocations across RQ1–RQ4 confirming 100% data retention (N = 4,050).",
+    tbl_num=4,
+    tbl_title="Minimum Sample Size Computation and Analytical Record Allocation per Research Question"
+)
+
+add_heading_2("Exploratory Data Analysis (EDA) Results, Visualizations, and Respective Insights")
 add_p(
     "Exploratory data analysis was conducted to uncover fundamental empirical patterns, distributional properties, and inter-variable "
     "dependencies across the U.S. generating fleet. Emphasis is placed on the direct operational and regulatory interpretation of "
-    "figures and tables, each of which is explicitly referenced and synthesized in the text."
+    "visualizations and tables, each of which is explicitly referenced and synthesized in the text."
 )
 
 # Insert Figure 1
